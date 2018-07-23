@@ -1,0 +1,50 @@
+.split {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+  
+  .left {
+    left: -20%;
+    background-image: url("/assets/site/mapblue.jpg");
+  }
+
+  .right {
+    right: -80%;
+    background-color:rgba(34, 34, 34, 0.74);
+  }
+
+  .logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }
+  #logoImage {
+    height: 90px;
+    width: 270px;
+
+  }
+  .searchbar {
+    position: absolute;
+    bottom: 40px;
+    left: 20px;
+  }
+
+  #search-button:hover{
+    cursor: pointer;
+  }
+
+  #search-text,
+#search-button {
+  line-height: 16px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #000000;
+}
+
+#search-text {
+ width:180px;
+}
