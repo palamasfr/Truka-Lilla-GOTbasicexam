@@ -1,0 +1,15 @@
+create database if not exists got;
+use got;
+
+create table characters(
+	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	dead BOOLEAN,
+	name VARCHAR(255) NOT NULL,
+	alias VARCHAR(255),
+	portrait VARCHAR(255) NOT NULL,
+	picture VARCHAR(255) NOT NULL,
+	bio VARCHAR(255),
+	organization VARCHAR(255),
+	house VARCHAR(255)
+)
+ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

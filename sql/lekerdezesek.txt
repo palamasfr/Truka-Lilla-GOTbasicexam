@@ -1,0 +1,23 @@
+6./a lekérdezés:
+
+SELECT house,
+COUNT(name)
+FROM `characters`
+WHERE dead <> true AND organization = ''
+GROUP BY house
+
+6./b lekérdezés:
+
+SELECT * FROM characters
+WHERE dead = 'true' AND bio LIKE '%hero%'
+
+6./c lekérdezés:
+
+SELECT * FROM `characters`
+WHERE organization = 'nightwatch' AND dead = '' AND house = ''
+
+6./d lekérdezés:
+
+SELECT name AS Hero, alias AS 'Nick Name', house AS 'Big House'
+FROM characters
+WHERE house <> 'Lannister' AND organization <> 'Royalguard' AND dead = '' AND (bio NOT LIKE 'Lannister' OR 'King''s Landing')
