@@ -12,7 +12,7 @@ function getData(url, callbackFunc) {
 function successAjax(xhttp) {
     // itt a json content, benne a data változóban
     var userDatas = JSON.parse(xhttp.responseText);
-    console.log(userDatas);
+    showCharactersList(userDatas);
     /*
       Pár sorral lejebb majd ezt olvashatod:
       IDE ÍRD A FÜGGVÉNYEKET!!!!!! NE EBBE AZ EGY SORBA HANEM INNEN LEFELÉ!
@@ -24,8 +24,7 @@ function successAjax(xhttp) {
     */
     showAliveCharacters(userDatas);
     sortByName(userDatas);
-    showCharacterPic(userDatas);
-    showImage(userDatas);
+    showCharacterList(userDatas);
     searchCharacter(userDatas);
 }
 
@@ -56,22 +55,48 @@ function sortByName(arr) {
     return arr;
 }
 
-function showCharacterPic(arr, i) {
-    return function () {
-        showPortrait(arr[i]);
-    };
+/**
+ * @param {Array} listSource
+ */
+
+function showCharactersList(listSource) {
+    var container = document.querySelector('.left');
+    var listDiv = createListDiv(container);
+    for (let i = 0; i < listSource.length; i++) {
+        createPortrait(listDiv, listSource[i]);
+    }
 }
 
-
-function showImage(arr) {
-    var portrait = document.querySelector('.left');
-    for (var i = 0; i < arr.length; i++) {
-        var portraitDiv = document.createElement('div');
-        portraitDiv.onclick = showCharacterPic(arr, i);
-        var htmlForPortrait += `</div><div class="left"><img src="../img/${arr[i].image}"></div>`;
-        portraitDiv.innerHTML = htmlForPortrait;
-        portrait.appendChild(portraitDiv);
+function createListDiv(container) {
+    var listDiv = container.querySelector('.list-div');
+    if (!listDiv) {
+        listDiv = document.createElement('div');
+        listDiv.className = 'list-div';
+        container.appendChild(listDiv);
     }
+    return listDiv;
+}
+
+function createPortrait(list, portrait) {
+    var itemDiv = document.createElement('div');
+    itemDiv.className = 'character-portrait';
+    itemDiv.image = portrait;
+    itemDiv.onclick = function (ev) {
+        createOnePortrait(this.image);
+    }
+
+    var img = document.createElement('img');
+    img.src = '/img/' + portrait.image;
+    img.alt = portrait.name;
+
+    var span = document.createElement('span');
+    span.innerHTML = portrait.model;
+
+    itemDiv.appendChild(img);
+    itemDiv.appendChild(span);
+
+    list.appendChild(itemDiv);
+
 }
 
 function searchCharacter() {
