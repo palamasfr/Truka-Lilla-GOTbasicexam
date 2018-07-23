@@ -105,6 +105,7 @@ function searchCharacter() {
     for (var i = 0; i < list.length; i++) {
         if (list[i].arr.name.toLoweCase().indexOf(this.value.toLowerCase()) < 0) {
             list[i].style.display = 'none';
+            alert('Character not found')
         } else {
             list[i].style.display = 'block';
         }
